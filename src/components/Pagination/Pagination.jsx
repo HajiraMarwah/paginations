@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import PaginationControls from "./PaginationControls";
+
+import "./Pagination.css";
+import ProductCard from "../ProductCard/ProductCard";
+import PaginationControls from "../PaginationControls/PaginationControls";
 
 function Pagination() {
   const [products, setProducts] = useState([]);
@@ -28,16 +30,8 @@ function Pagination() {
   };
 
   return (
-    <div
-      style={{
-        width: "85%",
-        margin: "20px auto",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-        Product List
-      </h2>
+    <div className="pagination-container">
+      <h2 className="pagination-title">Product List</h2>
 
       {/* Pagination Controls on TOP */}
       <PaginationControls
@@ -48,20 +42,13 @@ function Pagination() {
 
       {/* Product Grid */}
       {currentProducts.length > 0 ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "20px",
-            marginBottom: "30px",
-          }}
-        >
+        <div className="product-grid">
           {currentProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard   key={product.id} product={product} />
           ))}
         </div>
       ) : (
-        <p style={{ textAlign: "center" }}>No products found</p>
+        <p className="no-products">No products found</p>
       )}
     </div>
   );
